@@ -18,7 +18,6 @@ class CreateJobsTable extends Migration
             $table->string('contractor');
             $table->string('location');
             $table->timestamps();
-            $table->foreignId('id')->constrained();
         });
     }
 

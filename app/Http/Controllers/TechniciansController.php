@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use App\Technician;
+use App\User;
 
 class TechniciansController extends Controller
 {
@@ -13,7 +15,10 @@ class TechniciansController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::orderBy('id', 'asc')->get();
+        return view('technician.index')->with('user', $user);
+        // $technician = Technician::orderBy('technicianID', 'asc')->get();
+        // return view('technician.index')->with('technician', $technician);
     }
 
     /**
@@ -23,7 +28,11 @@ class TechniciansController extends Controller
      */
     public function create()
     {
-        //
+        // $idEmail = \DB::table('users')->pluck('email', 'email');
+        // $idUsername = \DB::table('users')->pluck('email', 'id');
+        // $idlist = ['0' => 'Select an id'] + collect($idlist)->toArray();
+        // $idlist = Technician::orderBy('id')->pluck('name', 'id');
+        return view('technician.create');
     }
 
     /**
@@ -34,7 +43,26 @@ class TechniciansController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'surname' => 'required|min:3',
+            'email' => 'required',
+            'phone' => 'required|between:10,12',
+            'position' => 'required|min:3',
+            'id' => 'required',
+        ]);
+
+        // create post
+        $technician = new Technician;
+        $technician->name = $request->input('name');
+        $technician->surname = $request->input('surname');
+        $technician->email = $request->input('email');
+        $technician->phone = $request->input('phone');
+        $technician->position = $request->input('position');
+        $technician->id = $request->input('id');
+        $technician->save();
+
+        return redirect('/technician')->with('success', 'Technician Added');
     }
 
     /**
@@ -45,7 +73,10 @@ class TechniciansController extends Controller
      */
     public function show($id)
     {
-        //
+        $userID = auth()->user()->id;
+        $user = User::find($userID);
+        $technician = Technician::find($id);
+        return view('technician.show')->with('technician', $technician);
     }
 
     /**
@@ -56,7 +87,10 @@ class TechniciansController extends Controller
      */
     public function edit($id)
     {
-        //
+        $idUsername = \DB::table('users')->pluck('username', 'id');
+        $technician = Technician::find($id);
+        return view('technician.edit')->with('technician', $technician)->with('idUsername', $idUsername);
+        // return view('technician.edit')->with('technician', $technician);
     }
 
     /**
@@ -68,7 +102,26 @@ class TechniciansController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'surname' => 'required|min:3',
+            'email' => 'required',
+            'phone' => 'required|between:10,12',
+            'position' => 'required|min:3',
+            'id' => 'required',
+        ]);
+
+        // create post
+        $technician = Technician::find($id);
+        $technician->name = $request->input('name');
+        $technician->surname = $request->input('surname');
+        $technician->email = $request->input('email');
+        $technician->phone = $request->input('phone');
+        $technician->position = $request->input('position');
+        $technician->id = $request->input('id');
+        $technician->save();
+
+        return redirect('/technician')->with('success', 'Technician Updated');
     }
 
     /**
@@ -79,6 +132,8 @@ class TechniciansController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $technician = Technician::find($id);
+        $technician->delete();
+        return redirect('/technician')->with('success', 'Technician Deleted');
     }
 }

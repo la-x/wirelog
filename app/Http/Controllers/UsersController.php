@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\JobLog;
-// use App\Job;
 
 use Illuminate\Http\Request;
+use App\User;
 
-class JobLogsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class JobLogsController extends Controller
      */
     public function index()
     {
-        $job_log = JobLog::orderBy('job_logID', 'desc')->get();
-        // return view('technician.index')->with('technician', $technician);
-        return view('job_log.index')->with('job_log', $job_log);
+        $user = User::orderBy('id', 'asc')->get();
+        return view('user.index')->with('user', $user);
     }
 
     /**
@@ -27,7 +25,7 @@ class JobLogsController extends Controller
      */
     public function create()
     {
-        return view('job_log.create');
+        //
     }
 
     /**
@@ -38,22 +36,7 @@ class JobLogsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'comment' => 'required|min:3',
-            'jobID' => 'required',
-            // 'technicianID' => 'required',
-            'id' => 'required',
-        ]);
-
-        // create post
-        $job_log = new JobLog;
-        $job_log->comment = $request->input('comment');
-        $job_log->jobID = $request->input('jobID');
-        // $job_log->technicianID = $request->input('technicianID');
-        $job_log->id = $request->input('id');
-        $job_log->save();
-
-        return redirect('/job_log')->with('success', 'Comment Added');
+        //
     }
 
     /**
@@ -64,7 +47,11 @@ class JobLogsController extends Controller
      */
     public function show($id)
     {
-        //
+        // $userID = user()->id;
+        $user = User::find($id);
+        // $job = Job::find($id);
+        // return view('job.show')->with('job', $job)->with('user', $user);
+        return view('user.show')->with('user', $user);
     }
 
     /**

@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Job;
+// use App\Technician;
+use App\User;
+// use App\JobLog;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +17,8 @@ class JobsController extends Controller
      */
     public function index()
     {
-        return view('job.index');
+        $job = Job::orderBy('jobID', 'asc')->get();
+        return view('job.index')->with('job', $job);
     }
 
     /**
@@ -23,7 +28,7 @@ class JobsController extends Controller
      */
     public function create()
     {
-        //
+        return view('job.create');
     }
 
     /**
@@ -34,7 +39,18 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'contractor' => 'required|min:3',
+            'location' => 'required|min:3',
+        ]);
+
+        // create post
+        $job = new Job;
+        $job->contractor = $request->input('contractor');
+        $job->location = $request->input('location');
+        $job->save();
+
+        return redirect('/job')->with('success', 'Job Added');
     }
 
     /**
@@ -45,7 +61,11 @@ class JobsController extends Controller
      */
     public function show($id)
     {
-        //
+        $userID = auth()->user()->id;
+        $user = User::find($userID);
+        $job = Job::find($id);
+        // return view('job.show')->with('job', $job)->with('user', $user);
+        return view('job.show')->with('job', $job);
     }
 
     /**
@@ -56,7 +76,8 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = Job::find($id);
+        return view('job.edit')->with('job', $job);
     }
 
     /**
@@ -68,7 +89,18 @@ class JobsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'contractor' => 'required|min:3',
+            'location' => 'required|min:3',
+        ]);
+
+        // create post
+        $job = Job::find($id);
+        $job->contractor = $request->input('contractor');
+        $job->location = $request->input('location');
+        $job->save();
+
+        return redirect('/job')->with('success', 'Job Updated');
     }
 
     /**
@@ -79,6 +111,8 @@ class JobsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::find($id);
+        $job->delete();
+        return redirect('/job')->with('success', 'Job Deleted');
     }
 }

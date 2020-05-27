@@ -23,3 +23,33 @@ Route::get('/job', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'PagesController@index');
+
+Route::get('/jobs', 'PagesController@jobs')->middleware('auth');;
+
+Route::get('/techs', 'PagesController@techs')->middleware('auth');;
+
+Route::get('/job_log', 'PagesController@techs')->middleware('auth');;
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('job', 'JobsController')->middleware('auth');
+
+Route::resource('technician', 'TechniciansController')->middleware('auth');
+
+Route::resource('job_log', 'JobLogsController')->middleware('auth');
+
+////////////////////////////////////////////////////////////////////////////////
+
+Route::resource('user', 'UsersController')->middleware('auth');;
