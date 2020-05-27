@@ -18,7 +18,7 @@ class CreateJobLogsTable extends Migration
             $table->string('comment');
             $table->timestamps();
             $table->foreignId('jobID')->constrained();
-            $table->foreignId('technicianID')->constrained();
+            // $table->foreignId('technicianID')->constrained();
             $table->foreignId('id')->constrained();
         });
     }

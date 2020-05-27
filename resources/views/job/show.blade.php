@@ -39,14 +39,16 @@
         {{Form::label('comment', 'Comment')}}
         {{Form::text('comment', '', ['class' => 'form-control', 'placeholder' => 'comment'])}}
     </div>
-    <div class="form-group" hidden="hidden">
-        {{Form::label('jobID', 'jobID')}}
-        {{Form::text('jobID', $job->jobID, ['class' => 'form-control', 'placeholder' => 'jobID'])}}
-    </div>
     {{-- <div class="form-group">
         {{Form::label('technicianID', 'technicianID')}}
         {{Form::text('technicianID', '', ['class' => 'form-control', 'placeholder' => 'technicianID'])}}
     </div> --}}
+
+    <div class="form-group" hidden="hidden">
+        {{Form::label('jobID', 'jobID')}}
+        {{Form::text('jobID', $job->jobID, ['class' => 'form-control', 'placeholder' => 'jobID'])}}
+    </div>
+    
     <div class="form-group" hidden="hidden">
         {{Form::label('id', 'id')}}
         {{Form::text('id', Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'id'])}}

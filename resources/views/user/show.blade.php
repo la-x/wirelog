@@ -2,7 +2,7 @@
 
 @section('content')
     <a href="/user" class="btn btn-primary float-right">BACK</a>
-    <h1>User</h1><small>user>show.blade.php</small>
+    <h1>USER</h1><small>user>show.blade.php</small>
     <div class="card card-body mb-1 text-center">
         <h4>
             <i class="fas fa-wrench"></i>
@@ -14,7 +14,7 @@
     </div>
 
 
-    <h1>ADD TECHNICIAN</h1>
+    <h1>MAKE A TECH</h1>
     {!! Form::open(['action' => 'TechniciansController@store', 'method' => 'Post']) !!}
     
     <div class="form-group">
@@ -27,7 +27,7 @@
         {{Form::text('surname', '', ['class' => 'form-control', 'placeholder' => 'Surame'])}}
     </div>
 
-    <div class="form-group">
+    <div class="form-group" hidden="hidden">
         {{Form::label('email', 'Email')}}
         {{Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email'])}}
     </div>
@@ -42,7 +42,7 @@
         {{Form::text('position', '', ['class' => 'form-control', 'placeholder' => 'Position'])}}
     </div>
 
-    <div class="form-group">
+    <div class="form-group" hidden="hidden">
         {{Form::label('id', 'id')}}
         {{Form::text('id', $user->id, ['class' => 'form-control', 'placeholder' => 'id'])}}
     </div>
