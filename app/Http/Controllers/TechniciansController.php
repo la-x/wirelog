@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Technician;
-use App\User;
 
 class TechniciansController extends Controller
 {
@@ -15,10 +14,8 @@ class TechniciansController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('id', 'asc')->get();
-        return view('technician.index')->with('user', $user);
-        // $technician = Technician::orderBy('technicianID', 'asc')->get();
-        // return view('technician.index')->with('technician', $technician);
+        $technician = Technician::orderBy('technicianID', 'asc')->get();
+        return view('technician.index')->with('technician', $technician);
     }
 
     /**
@@ -28,11 +25,11 @@ class TechniciansController extends Controller
      */
     public function create()
     {
-        // $idEmail = \DB::table('users')->pluck('email', 'email');
-        // $idUsername = \DB::table('users')->pluck('email', 'id');
+        $idUsername = \DB::table('users')->pluck('username', 'id');
+        $idEmail = \DB::table('users')->pluck('email', 'email');
         // $idlist = ['0' => 'Select an id'] + collect($idlist)->toArray();
         // $idlist = Technician::orderBy('id')->pluck('name', 'id');
-        return view('technician.create');
+        return view('technician.create')->with('idUsername', $idUsername)->with('idEmail', $idEmail);
     }
 
     /**
@@ -73,8 +70,6 @@ class TechniciansController extends Controller
      */
     public function show($id)
     {
-        $userID = auth()->user()->id;
-        $user = User::find($userID);
         $technician = Technician::find($id);
         return view('technician.show')->with('technician', $technician);
     }
