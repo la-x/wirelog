@@ -10,4 +10,8 @@ class Job extends Model
     protected $table = 'job';
     // Primary Key
     public $primaryKey = 'jobID';
+
+    public function JobLog() {
+        return $this->hasMany('App\JobLog');
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Job;
 // use App\Technician;
 use App\User;
-// use App\JobLog;
+use App\JobLog;
 
 use Illuminate\Http\Request;
 
@@ -61,11 +61,12 @@ class JobsController extends Controller
      */
     public function show($id)
     {
+        $comment = JobLog::where('jobID', '=', $id)->get();
         $userID = auth()->user()->id;
         $user = User::find($userID);
         $job = Job::find($id);
         // return view('job.show')->with('job', $job)->with('user', $user);
-        return view('job.show')->with('job', $job);
+        return view('job.show')->with('job', $job)->with('comment', $comment);
     }
 
     /**

@@ -11,9 +11,10 @@ class JobLog extends Model
     // Primary Key
     public $primaryKey = 'job_logID';
 
-    // public function getJobs() {
-    //         return $this->belongsTo('App\Job' ,'jobID' );
-    // }
+    public function Job() {
+            return $this->belongsTo('App\Job');
+    }
+
     public function test() {
             //
     }
