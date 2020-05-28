@@ -63,6 +63,7 @@ class JobsController extends Controller
      */
     public function show($id)
     {   
+        // return JobLog::select('id', 'comment', 'created_at')->where('jobID', '=', $id)->get();
         // $a = JobLog::where('jobID', '=', $id)->get();
         // return Technician::where('id', '=', $a)->get();
         // return User::where('id', $id)->get();

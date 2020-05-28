@@ -55,8 +55,7 @@ class JobLogsController extends Controller
         $job_log->id = $request->input('id');
         $job_log->save();
 
-        // return redirect('/job_log')->with('success', 'Comment Added');
-        return redirect('/job');
+        return redirect('/job')->with('success', 'Comment Added');
     }
 
     /**
