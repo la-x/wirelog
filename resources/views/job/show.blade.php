@@ -6,7 +6,6 @@
     <div class="card card-body mb-1 text-center">
         <h4>
             <i class="fas fa-wrench"></i>
-            <div class="text-danger">SELECTED</div>
             <div class ="text-warning">{{$job->jobID}}</div></a>
             <div class="text-default">{{$job->contractor}}<div>
             <div class="text-primary">{{$job->location}}</div>
@@ -15,11 +14,13 @@
         </h4>
     </div>
 
+    <div></div>
+
     @foreach ($comment as $comment)
     <div class="card card-body mb-1 text-center">
         <div><i class="fas fa-edit text-success"></i>{{$comment->comment}}</div>
         <div><i class="fas fa-edit text-success"></i>{{$comment->created_at}}</div>
-        <span>name</span><span>surname</span><span>{{$comment->name}}</span>
+        <span>name</span><span>surname</span><span>position</span>
         <div>phone</div>
     </div>
     @endforeach

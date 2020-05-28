@@ -12,6 +12,14 @@ class Technician extends Model
     public $primaryKey = 'technicianID';
 
     public function user() {
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\User', 'id');
+    }
+
+    public function job() {
+        return $this->hasMany('App\Job');
+    }
+
+    public function JobLog() {
+        return $this->hasMany('App\JobLog');
     }
 }

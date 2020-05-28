@@ -8,9 +8,9 @@
             <h4>
                 @if(Auth::user()->email == 'l.albert@wirelog.com.au')
                 <a href="/user/{{$user->id}}">
+                @endif
                 <div class="text-warning">{{$user->id}}</div>
                 </a>
-                @endif
                 <div class="text-info">{{$user->email}}</div>
                 <div class="text-primary">{{$user->created_at}}</div>
             </h4>

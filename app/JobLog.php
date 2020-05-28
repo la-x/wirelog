@@ -15,7 +15,7 @@ class JobLog extends Model
             return $this->belongsTo('App\Job');
     }
 
-    public function test() {
-            //
+    public function technician() {
+            return $this->belongsTo('App\Technician');
     }
 }

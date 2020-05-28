@@ -6,12 +6,17 @@
     <div class="card card-body mb-1 text-center">
         <h4>
             <i class="fas fa-wrench"></i>
-            <div class="text-danger">SELECTED</div>
             <div class ="text-warning">{{$user->id}}</div></a>
             <div class="text-default">{{$user->email}}<div>
             <div class="text-primary">{{$user->created_at}}</div>
         </h4>
     </div>
+
+    {{-- <a href="/user/{{$user->userID}}/edit" class="btn btn-secondary">EDIT</a> --}}
+    {!!Form::open(['action' => ['UsersController@destroy', $user->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+    {{Form::hidden('_method', 'DELETE')}}
+    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+    {!!Form::close()!!}
 
 
     <h1>MAKE A TECH</h1>

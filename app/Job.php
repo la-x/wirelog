@@ -14,4 +14,8 @@ class Job extends Model
     public function JobLog() {
         return $this->hasMany('App\JobLog');
     }
+
+    public function technician() {
+        return $this->hasMany('App\Technician');
+    }
 }

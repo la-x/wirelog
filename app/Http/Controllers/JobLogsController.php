@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\JobLog;
-// use App\Job;
+use App\Job;
+use App\Technician;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -53,7 +55,8 @@ class JobLogsController extends Controller
         $job_log->id = $request->input('id');
         $job_log->save();
 
-        return redirect('/job_log')->with('success', 'Comment Added');
+        // return redirect('/job_log')->with('success', 'Comment Added');
+        return redirect('/job');
     }
 
     /**

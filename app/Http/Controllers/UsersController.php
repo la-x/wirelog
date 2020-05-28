@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+Use App\Technician;
 
 class UsersController extends Controller
 {
@@ -47,7 +48,6 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        // $userID = user()->id;
         $user = User::find($id);
         // $job = Job::find($id);
         // return view('job.show')->with('job', $job)->with('user', $user);
@@ -85,6 +85,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/user')->with('success', 'User Deleted');
     }
 }

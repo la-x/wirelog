@@ -82,7 +82,7 @@ class TechniciansController extends Controller
      */
     public function edit($id)
     {
-        $idUsername = \DB::table('users')->pluck('username', 'id');
+        $idUsername = \DB::table('users')->pluck('email', 'id');
         $technician = Technician::find($id);
         return view('technician.edit')->with('technician', $technician)->with('idUsername', $idUsername);
         // return view('technician.edit')->with('technician', $technician);

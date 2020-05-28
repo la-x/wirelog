@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Job;
-// use App\Technician;
+use App\Technician;
 use App\User;
 use App\JobLog;
 
@@ -42,12 +42,14 @@ class JobsController extends Controller
         $this->validate($request, [
             'contractor' => 'required|min:3',
             'location' => 'required|min:3',
+            'id' => 'required',
         ]);
 
         // create post
         $job = new Job;
         $job->contractor = $request->input('contractor');
         $job->location = $request->input('location');
+        $job->id = $request->input('id');
         $job->save();
 
         return redirect('/job')->with('success', 'Job Added');
@@ -60,7 +62,10 @@ class JobsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        // $a = JobLog::where('jobID', '=', $id)->get();
+        // return Technician::where('id', '=', $a)->get();
+        // return User::where('id', $id)->get();
         $comment = JobLog::where('jobID', '=', $id)->get();
         $userID = auth()->user()->id;
         $user = User::find($userID);
@@ -93,12 +98,14 @@ class JobsController extends Controller
         $this->validate($request, [
             'contractor' => 'required|min:3',
             'location' => 'required|min:3',
+            'id' => 'required',
         ]);
 
         // create post
         $job = Job::find($id);
         $job->contractor = $request->input('contractor');
         $job->location = $request->input('location');
+        $job->id = $request->input('id');
         $job->save();
 
         return redirect('/job')->with('success', 'Job Updated');

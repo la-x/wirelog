@@ -27,18 +27,14 @@
                 </ul>
   
                 <ul class="navbar-nav mr-auto">
-                  {{-- <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                  <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-                  <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li> --}}
-                  <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
-                  {{-- <li class="nav-item"><a class="nav-link" href="/about">About</a></li> --}}
-                  {{-- <li class="nav-item"><a class="nav-link" href="/services">SERVICES</a></li> --}}
+                  {{-- <li class="nav-item"><a class="nav-link" href="/">HOME</a></li> --}}
                   @if(!Auth::guest())
                         <li class="nav-item"><a class="nav-link" href="/job">JOBS</a></li>
                         <li class="nav-item"><a class="nav-link" href="/user">USERS</a></li>
                         <li class="nav-item"><a class="nav-link" href="/technician">TECHNICIANS</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/job_log">JOB_LOGS</a></li>
+                        @if(Auth::user()->email == 'l.albert@wirelog.com.au')
+                        <li class="nav-item"><a class="nav-link" href="/job_log">RECENT ACTIVITY</a></li>
+                        @endif
                         {{-- <li class="nav-item"><a class="nav-link" href="/job_log/create">ADD COMMENT</a></li> --}}
                       {{-- @if(Auth::user()->email == 'l.albert@wirelog.com.au')
                         <li class="nav-item"><a class="nav-link" href="/job/create">ADD JOBS</a></li>
