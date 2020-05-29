@@ -16,10 +16,10 @@ class Technician extends Model
     }
 
     public function job() {
-        return $this->hasMany('App\Job');
+        return $this->hasMany('App\Job', 'id');
     }
 
     public function JobLog() {
-        return $this->hasMany('App\JobLog');
+        return $this->hasMany('App\JobLog', 'id');
     }
 }

@@ -12,10 +12,10 @@ class Job extends Model
     public $primaryKey = 'jobID';
 
     public function JobLog() {
-        return $this->hasMany('App\JobLog');
+        return $this->hasMany('App\JobLog', 'id');
     }
 
     public function technician() {
-        return $this->hasMany('App\Technician');
+        return $this->hasMany('App\Technician', 'id');
     }
 }

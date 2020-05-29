@@ -16,14 +16,36 @@
 
     <div></div>
 
-    @foreach ($comment as $comment)
+    {{-- @foreach ($jl as $jl)
+    <div class="card card-body mb-1 text-center">
+        <div><i class="fas fa-edit text-success"></i>PK {{$jl->job_logID}}</div>
+        <div><i class="fas fa-edit text-success"></i>{{$jl->comment}}</div>
+        <div><i class="fas fa-edit text-success"></i>{{$jl->created_at}}</div>
+        <div><i class="fas fa-edit text-success"></i>jobID {{$jl->jobID}}</div>
+        <div><i class="fas fa-edit text-success"></i>user {{$jl->id}}</div>
+    </div>
+    @endforeach --}}
+
+
+    {{-- @foreach ($comment as $comment)
     <div class="card card-body mb-1 text-center">
         <div><i class="fas fa-edit text-success"></i>{{$comment->comment}}</div>
         <div><i class="fas fa-edit text-success"></i>{{$comment->created_at}}</div>
-        <span>name</span><span>surname</span><span>position</span>
-        <div>phone</div>
+        <div><i class="fas fa-edit text-success"></i>{{$comment->email}}</div>
+
+    </div>
+    @endforeach --}}
+
+    @foreach ($te as $te)
+    <div class="card card-body mb-1 text-center">
+        <div class="fas fa-edit text-default">{{$te->comment}}</div>
+        <div class="fas fa-edit text-primary">{{$te->created_at}}</div>
+        <span class="fas fa-edit text-info">{{$te->name}} {{$te->surname}}</span>
+        <div class="fas fa-edit text-warning">{{$te->position}}</div>
+        <div class="fas fa-edit text-success">{{$te->phone}}</div>
     </div>
     @endforeach
+
 
     <hr>
     @if(Auth::user()->email == 'l.albert@wirelog.com.au')
