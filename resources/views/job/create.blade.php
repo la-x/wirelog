@@ -3,7 +3,7 @@
 @section('content')
 @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="./" class="btn btn-primary float-right">BACK</a>
-    <h1>ADD JOB</h1><small>create.blade.php</small>
+    <h1>ADD JOB</h1><small>job>create.blade.php</small>
     {!! Form::open(['action' => 'JobsController@store', 'method' => 'Post']) !!}
     <div class="form-group">
         {{Form::label('contractor', 'Contractor')}}

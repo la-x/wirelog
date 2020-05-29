@@ -16,6 +16,10 @@
     <div class="form-group">
         {{-- {{Form::file('coverImage')}} --}}
     </div>
+    <div class="form-group" hidden="hidden">
+        {{Form::label('id', 'id')}}
+        {{Form::text('id', Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'id'])}}
+    </div>
     {{Form::hidden('_method','PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
