@@ -13,8 +13,7 @@
                 @if(Auth::user()->email == 'l.albert@wirelog.com.au')
                     <a href="/technician/{{$technician->technicianID}}">
                 @endif<div class ="text-warning">{{$technician->technicianID}}</div></a>
-                <div class="text-default">{{$technician->name}}<div>
-                <div class="text-default">{{$technician->surname}}</div>
+                <div class="text-default">{{$technician->name}} {{$technician->surname}}<div>
                 <div class ="text-primary">{{$technician->email}}</div></a>
                 <div class="text-primary">{{$technician->phone}}<div>
                 <div class="text-warning">{{$technician->position}}</div>
