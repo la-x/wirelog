@@ -14,7 +14,7 @@ class TechniciansController extends Controller
      */
     public function index()
     {
-        $technician = Technician::orderBy('technicianID', 'asc')->get();
+        $technician = Technician::orderBy('technicianID', 'desc')->get();
         return view('technician.index')->with('technician', $technician);
     }
 
