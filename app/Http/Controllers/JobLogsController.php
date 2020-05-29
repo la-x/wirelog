@@ -17,9 +17,14 @@ class JobLogsController extends Controller
      */
     public function index()
     {
-        $job_log = JobLog::orderBy('job_logID', 'desc')->get();
-        // return view('technician.index')->with('technician', $technician);
-        return view('job_log.index')->with('job_log', $job_log);
+
+        $allLogs = JobLog::orderBy('job_logID', 'desc')
+        ->Join('technician', 'technician.id', '=', 'job_log.id')
+        ->get();
+
+        // $job_log = JobLog::orderBy('job_logID', 'desc')->get();
+
+        return view('job_log.index')->with('allLogs', $allLogs);
     }
 
     /**

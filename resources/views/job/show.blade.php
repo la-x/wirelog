@@ -2,64 +2,53 @@
 
 @section('content')
     <a href="/job" class="btn btn-primary float-right">BACK</a>
-    <h1>JOB</h1><small>job>show.blade.php</small>
+    <h3>JOB</h3><small>job>show.blade.php</small>
     <div class="card card-body mb-1 text-center">
-        <h4>
+        <h5>
             <i class="fas fa-wrench"></i>
-            <div class ="text-warning">{{$job->jobID}}</div></a>
+            <small class="text-danger">SELECTED</small>
+            <div class ="text-warning">{{$job->jobID}}</div>
             <div class="text-default">{{$job->contractor}}<div>
             <div class="text-primary">{{$job->location}}</div>
             {{-- <small>created {{$job->created_at}}</small> --}}
             {{-- {{$user->username}} --}}
-        </h4>
+        </h5>
     </div>
-
-    <div></div>
-
-    {{-- @foreach ($jl as $jl)
-    <div class="card card-body mb-1 text-center">
-        <div><i class="fas fa-edit text-success"></i>PK {{$jl->job_logID}}</div>
-        <div><i class="fas fa-edit text-success"></i>{{$jl->comment}}</div>
-        <div><i class="fas fa-edit text-success"></i>{{$jl->created_at}}</div>
-        <div><i class="fas fa-edit text-success"></i>jobID {{$jl->jobID}}</div>
-        <div><i class="fas fa-edit text-success"></i>user {{$jl->id}}</div>
-    </div>
-    @endforeach --}}
-
-
-    {{-- @foreach ($comment as $comment)
-    <div class="card card-body mb-1 text-center">
-        <div><i class="fas fa-edit text-success"></i>{{$comment->comment}}</div>
-        <div><i class="fas fa-edit text-success"></i>{{$comment->created_at}}</div>
-        <div><i class="fas fa-edit text-success"></i>{{$comment->email}}</div>
-
-    </div>
-    @endforeach --}}
-
-    @foreach ($te as $te)
-    <div class="card card-body mb-1 text-center">
-        <div class="fas fa-edit text-default">{{$te->comment}}</div>
-        <div class="fas fa-edit text-primary">{{$te->created_at}}</div>
-        <span class="fas fa-edit text-info">{{$te->name}} {{$te->surname}}</span>
-        <div class="fas fa-edit text-warning">{{$te->position}}</div>
-        <div class="fas fa-edit text-success">{{$te->phone}}</div>
-    </div>
-    @endforeach
-
 
     <hr>
+
     @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="/job/{{$job->jobID}}/edit" class="btn btn-secondary">EDIT</a>
     {!!Form::open(['action' => ['JobsController@destroy', $job->jobID], 'method' => 'POST', 'class' => 'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}
     {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
-    @endif
     <hr>
-    <h1>COMMENT</h1>
+    @endif
+
+    {{-- <hr>
+    <h3 class="text-center">COMMENTS</h3>
+    <hr> --}}
+
+    @foreach ($te as $te)
+    <div class="card card-body mb-1 text-center">
+        <h5>
+            <div class="fas fa-edit text-default">{{$te->comment}}</div>
+            <div class="fas fa-edit text-info">{{$te->name}} {{$te->surname}}</div>
+            <div class="fas fa-edit text-warning">{{$te->position}}</div>
+            <div class="fas fa-edit text-primary">{{$te->phone}}</div>
+            <div class="fas fa-edit text-info">{{$te->email}}</div>
+            <small class="text-success">created </small><small class="fas fa-edit text-primary">{{$te->created_at}}</small>
+        </h5>
+    </div>
+    @endforeach
+
+    <hr>
+
     {!! Form::open(['action' => 'JobLogsController@store', 'method' => 'Post']) !!}
     <div class="form-group">
-        {{Form::label('comment', 'Comment')}}
+        {{-- {{Form::label('comment', 'Comment')}} --}}
+        <h3>COMMENT</h3>
         {{Form::text('comment', '', ['class' => 'form-control', 'placeholder' => 'comment'])}}
     </div>
     {{-- <div class="form-group">

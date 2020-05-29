@@ -2,14 +2,15 @@
 
 @section('content')
     <a href="/user" class="btn btn-primary float-right">BACK</a>
-    <h1>USER</h1><small>user>show.blade.php</small>
+    <h3>USER</h3><small>user>show.blade.php</small>
     <div class="card card-body mb-1 text-center">
-        <h4>
+        <h5>
+            <small class="text-danger">SELECTED</small>
             <i class="fas fa-wrench"></i>
             <div class ="text-warning">{{$user->id}}</div></a>
             <div class="text-default">{{$user->email}}<div>
             <div class="text-primary">{{$user->created_at}}</div>
-        </h4>
+        </h5>
     </div>
 
     {{-- <a href="/user/{{$user->userID}}/edit" class="btn btn-secondary">EDIT</a> --}}

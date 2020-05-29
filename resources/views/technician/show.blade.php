@@ -18,9 +18,10 @@
 
 @section('content')
     <a href="/technician" class="btn btn-primary float-right">BACK</a>
-    <h1>TECHNICIAN</h1><small>show.blade.php</small>
+    <h3>TECHNICIAN</h3><small>show.blade.php</small>
     <div class="card card-body mb-1 text-center">
-        <h4>
+        <h5>
+            <small class="text-danger">SELECTED</small>
             <i class="fas fa-wrench"></i>
             <div class ="text-warning">{{$technician->technicianID}}</div></a>
             <div class="text-default">{{$technician->name}}<div>
@@ -29,7 +30,7 @@
             <div class="text-primary">{{$technician->phone}}<div>
             <div class="text-warning">{{$technician->position}}</div>
             <small class="text-info">created {{$technician->created_at}}</small>
-        </h4>
+        </h5>
     </div>
 
     {{-- <div>{{$technician->technicianID}}</div>

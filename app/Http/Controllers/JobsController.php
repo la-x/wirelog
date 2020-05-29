@@ -85,6 +85,7 @@ class JobsController extends Controller
 
         $te = JobLog::where('jobID', '=', $id)
         ->Join('technician', 'technician.id', '=', 'job_log.id')
+        ->orderBy('job_log.created_at', 'desc')
         ->get();
 
         // $te = Technician::all();

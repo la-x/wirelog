@@ -2,20 +2,19 @@
 
 @section('content')
     <h1>MOST RECENT</h1><small>job_log>index.blade.php</small>
-    @if(count($job_log) > 0)
-        @foreach($job_log as $job_log)
+    @if(count($allLogs) > 0)
+        @foreach($allLogs as $allLogs)
             <div class="card card-body mb-1 text-center">
-                <h4>
+                <h6>
                     <i class="fas fa-wrench"></i>
-                    <div class ="text-warning">{{$job_log->job_logID}}</div></a>
-                    <div class="text-default">{{$job_log->comment}}<div>
-                    <div class="text-primary">{{$job_log->updated_at}}<div>
-                    <div class="text-success">jobID {{$job_log->jobID}}<div>
-                    <div class="text-danger">userID {{$job_log->id}}</div>
-                </h4>
+                    <div class="fas fa-edit text-default">{{$allLogs->comment}}</div>
+                    <div class="fas fa-edit text-primary">{{$allLogs->created_at}}</div>
+                    <span class="fas fa-edit text-info">{{$allLogs->name}} {{$allLogs->surname}}</span>
+                    <div class="fas fa-edit text-warning">{{$allLogs->position}}</div>
+                    <div class="fas fa-edit text-success">{{$allLogs->phone}}</div>
+                </h6>
             </div>
         @endforeach
-
     @else
         <p>No posts found</p>
     @endif

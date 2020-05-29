@@ -33,7 +33,7 @@
                         <li class="nav-item"><a class="nav-link" href="/user">USERS</a></li>
                         <li class="nav-item"><a class="nav-link" href="/technician">TECHNICIANS</a></li>
                         @if(Auth::user()->email == 'l.albert@wirelog.com.au')
-                        <li class="nav-item"><a class="nav-link" href="/job_log">RECENT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/job_log">ACTIVITY</a></li>
                         @endif
                         {{-- <li class="nav-item"><a class="nav-link" href="/job_log/create">ADD COMMENT</a></li> --}}
                       {{-- @if(Auth::user()->email == 'l.albert@wirelog.com.au')
