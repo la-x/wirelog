@@ -11,6 +11,9 @@ class JobLog extends Model
     // Primary Key
     public $primaryKey = 'job_logID';
 
+    const CREATED_AT = 'c_at';
+    const UPDATED_AT = 'u_at';
+
     public function Job() {
             return $this->belongsTo('App\Job');
     }

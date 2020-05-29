@@ -71,6 +71,8 @@ class JobsController extends Controller
 
     
     {   
+        $a = auth()->user()->id;
+        $b = Technician::where('id', '=', $a)->get();
         // return JobLog::where('jobID', '=', $a);
         // $a = JobLog::select('id')->where('jobID', '=', $id)->get();
         // $t = Technician::find($a);
@@ -85,7 +87,7 @@ class JobsController extends Controller
 
         $te = JobLog::where('jobID', '=', $id)
         ->Join('technician', 'technician.id', '=', 'job_log.id')
-        ->orderBy('job_log.created_at', 'desc')
+        ->orderBy('job_log.c_at', 'desc')
         ->get();
 
         // $te = Technician::all();
@@ -103,7 +105,7 @@ class JobsController extends Controller
         $user = User::find($userID);
         $job = Job::find($id);
         // return view('job.show')->with('job', $job)->with('user', $user);
-        return view('job.show')->with('job', $job)->with('te', $te);
+        return view('job.show')->with('job', $job)->with('te', $te)->with('b', $b);
     }
 
     /**

@@ -16,7 +16,8 @@ class CreateJobLogsTable extends Migration
         Schema::create('job_log', function (Blueprint $table) {
             $table->id('job_logID');
             $table->string('comment');
-            $table->timestamps();
+            $table->timestamp('c_at');
+            $table->timestamp('u_at');
             $table->foreignId('jobID')->constrained();
             // $table->foreignId('technicianID')->constrained();
             $table->foreignId('id')->constrained();

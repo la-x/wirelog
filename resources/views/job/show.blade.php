@@ -38,23 +38,26 @@
             <div class="fas fa-edit text-warning">{{$te->position}}</div>
             <div class="fas fa-edit text-primary">{{$te->phone}}</div>
             <div class="fas fa-edit text-info">{{$te->email}}</div>
-            <small class="text-success">created </small><small class="fas fa-edit text-primary">{{$te->created_at}}</small>
+            <small class="text-success">created </small><small class="fas fa-edit text-primary">{{$te->c_at}}</small>
         </h5>
     </div>
     @endforeach
 
     <hr>
 
+    @if(count($b) == 0)
+    <div class="alert alert-warning">
+        <strong>Sorry!</strong> You need to be a tech before you can comment.
+    </div>                                      
+@else
+
+    @foreach($b as $b)
     {!! Form::open(['action' => 'JobLogsController@store', 'method' => 'Post']) !!}
     <div class="form-group">
         {{-- {{Form::label('comment', 'Comment')}} --}}
         <h3>COMMENT</h3>
         {{Form::text('comment', '', ['class' => 'form-control', 'placeholder' => 'comment'])}}
     </div>
-    {{-- <div class="form-group">
-        {{Form::label('technicianID', 'technicianID')}}
-        {{Form::text('technicianID', '', ['class' => 'form-control', 'placeholder' => 'technicianID'])}}
-    </div> --}}
 
     <div class="form-group" hidden="hidden">
         {{Form::label('jobID', 'jobID')}}
@@ -67,5 +70,7 @@
     </div>
     {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
     {!! Form::close() !!}
+    @endforeach
+@endif
 
 @endsection
