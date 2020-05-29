@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if(count($b) == 0)
+    <div class="alert alert-warning">
+        <strong>Sorry!</strong> You need to be a tech before you see these details.
+    </div>
+    @else
+
     @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="/technician/create" class="btn btn-primary float-right">ADD TECH</a>
     @endif
@@ -30,5 +37,7 @@
 
     @else
         <p>No posts found</p>
+    @endif
+
     @endif
 @endsection

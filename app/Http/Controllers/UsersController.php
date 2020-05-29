@@ -48,10 +48,11 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        $b = Technician::where('id', '=', $id)->get();
         $user = User::find($id);
         // $job = Job::find($id);
         // return view('job.show')->with('job', $job)->with('user', $user);
-        return view('user.show')->with('user', $user);
+        return view('user.show')->with('user', $user)->with('b', $b);
     }
 
     /**

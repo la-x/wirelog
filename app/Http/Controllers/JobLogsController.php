@@ -18,7 +18,6 @@ class JobLogsController extends Controller
     
     public function index()
     {
-
         $allLogs = JobLog::orderBy('job_logID', 'desc')
         ->Join('technician', 'technician.id', '=', 'job_log.id')
         ->get();

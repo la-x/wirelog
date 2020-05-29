@@ -19,8 +19,13 @@
     {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
 
+    @if(count($b) !== 0)
+    <div class="alert alert-info">
+        <strong>Hey!</strong> This user is already a tech.
+    </div>                                      
+    @else
 
-    <h1>MAKE A TECH</h1>
+    <h3>MAKE A TECH</h3>
     {!! Form::open(['action' => 'TechniciansController@store', 'method' => 'Post']) !!}
     
     <div class="form-group">
@@ -63,5 +68,7 @@
 
     {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
     {!! Form::close() !!}
+
+    @endif
 
 @endsection
