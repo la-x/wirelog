@@ -26,7 +26,9 @@
         @endforeach
 
     @else
-        <p>No posts found</p>
+    <div class="alert alert-secondary">
+        No Jobs found.
+    </div>
     @endif
 
 @endsection

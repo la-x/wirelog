@@ -16,6 +16,8 @@
             </div>
         @endforeach
     @else
-        <p>No posts found</p>
+    <div class="alert alert-secondary">
+        No activity found.
+    </div>
     @endif
 @endsection
