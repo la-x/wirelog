@@ -35,7 +35,7 @@
         <h5>
             <div class="fas fa-edit text-default">{{$te->comment}}</div>
             @if(count($b) == 0)
-            <div class="alert alert-light">
+            <div class="alert alert-warning">
                 <strong>Sorry!</strong> You need to be a tech before you can see these details.
             </div>                                      
             @else
