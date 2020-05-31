@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- <small>job>edit.blade.php</small> --}}
 @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="./" class="btn btn-primary float-right">BACK</a>
-    <h1>EDIT JOB</h1><small>job>edit.blade.php</small>
+    <h1>EDIT JOB</h1>
     {!! Form::open(['action' => ['JobsController@update', $job->jobID], 'method' => 'Post', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
         {{Form::label('contractor', 'Contractor')}}

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- <small>technician>index.blade.php</small> --}}
 
     @if(count($b) == 0)
     <div class="alert alert-warning">
@@ -11,7 +12,7 @@
     @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="/technician/create" class="btn btn-primary float-right">ADD TECH</a>
     @endif
-    <h3>TECHNICIANS</h3><small>technician>index.blade.php</small>
+    <h3>TECHNICIANS</h3>
     @if(count($technician) > 0)
         @foreach($technician as $technician)
         <div class="card card-body mb-1 text-center">

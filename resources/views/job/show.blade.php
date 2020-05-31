@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- <small>job>show.blade.php</small> --}}
     <a href="/job" class="btn btn-primary float-right">BACK</a>
-    <h3>JOB</h3><small>job>show.blade.php</small>
+    <h3>JOB</h3>
     {{-- <div class="card card-body mb-1 text-center">
         <h5>
             <i class="fas fa-wrench"></i>

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>MOST RECENT</h3><small>job_log>index.blade.php</small>
+{{-- <small>job_log>index.blade.php</small> --}}
+    <h3>MOST RECENT</h3>
     @if(count($allLogs) > 0)
         @foreach($allLogs as $allLogs)
             <div class="card card-body mb-1 text-center">

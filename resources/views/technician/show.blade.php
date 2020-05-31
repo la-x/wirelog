@@ -17,8 +17,9 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- <small>show.blade.php</small> --}}
     <a href="/technician" class="btn btn-primary float-right">BACK</a>
-    <h3>TECHNICIAN</h3><small>show.blade.php</small>
+    <h3>TECHNICIAN</h3>
     <div class="card card-body mb-1 text-center">
         <h5>
             <small class="text-danger">SELECTED</small>

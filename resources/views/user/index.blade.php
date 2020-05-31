@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>USERS</h3><small>users>index.blade.php</small>
+{{-- <small>users>index.blade.php</small> --}}
+    <h3>USERS</h3>
         @if(count($user) > 0)
         @foreach($user as $user)
         <div class="card card-body mb-1 text-center">

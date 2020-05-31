@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- <small>job>index.blade.php</small> --}}
     @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="/job/create" class="btn btn-primary float-right">ADD JOB</a>
     @endif
-    <h3>JOBS</h3><small>job>index.blade.php</small>
+    <h3>JOBS</h3>
     @if(count($job) > 0)
         @foreach($job as $job)
             {{-- <div class="card card-body mb-1 text-center">

@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- <small>technician>edit.blade.php</small> --}}
 @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="./" class="btn btn-primary float-right">BACK</a>
-    <h1>EDIT TECHNICIAN</h1><small>technician>edit.blade.php</small>
+    <h1>EDIT TECHNICIAN</h1>
     {!! Form::open(['action' => ['TechniciansController@update', $technician->technicianID], 'method' => 'Post']) !!}
     {{-- <div class="form-group">
         {{Form::label('ID', 'ID')}}
