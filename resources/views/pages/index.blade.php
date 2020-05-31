@@ -24,6 +24,7 @@
   <a href="mailto:info@wirelog.com.au" target="_top">
     <div class="mb-4 fixed-bottom text-center text-dark">
       <h6>info@wirelog.com.au</h6>
+      <h6><small>© 2020 LUKE ALBERT</small></h6>
     </div>
   </a>
     
