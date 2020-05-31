@@ -9,9 +9,10 @@
     </div>
     @else
 
-    @if(Auth::user()->email == 'l.albert@wirelog.com.au')
+    {{-- @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="/technician/create" class="btn btn-primary float-right">ADD TECH</a>
-    @endif
+    @endif --}}
+    
     <h3>TECHNICIANS</h3>
     @if(count($technician) > 0)
         @foreach($technician as $technician)
