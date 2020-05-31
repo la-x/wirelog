@@ -59,12 +59,12 @@
                 <strong>Sorry!</strong> You need to be a tech before you can see these details.
             </div>                                      
             @else
-            <div class="fas fa-edit text-info">{{$te->name}} {{$te->surname}}</div>
-            <div class="fas fa-edit text-warning">{{$te->position}}</div>
-            <div class="fas fa-edit text-primary">{{$te->phone}}</div>
-            <div class="fas fa-edit text-info">{{$te->email}}</div>
+            <h6 class="fas fa-edit text-info">{{$te->name}} {{$te->surname}}</h6>
+            <h6 class="fas fa-edit text-warning">{{$te->position}}</h6>
+            <h6 class="fas fa-edit text-primary">{{$te->phone}}</h6>
+            <h6 class="fas fa-edit text-info">{{$te->email}}</h6>
+            <div><small class="text-success">created </small><small class="fas fa-edit text-primary">{{$te->c_at}}</small></div>
             @endif
-            <small class="text-success">created </small><small class="fas fa-edit text-primary">{{$te->c_at}}</small>
         </h5>
     </div>
     @endforeach

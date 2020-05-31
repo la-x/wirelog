@@ -9,9 +9,10 @@
                 <h5>
                     <i class="fas fa-wrench"></i>
                     <div class="fas fa-edit text-default">{{$allLogs->comment}}</div>
-                    <span class="text-info">{{$allLogs->name}} {{$allLogs->surname}}</span><small class="fas fa-edit text-warning"> {{$allLogs->position}}</small>
-                    <div class="fas fa-edit text-primary">{{$allLogs->email}}</div>
-                    <small class="fas fa-edit text-info">{{$allLogs->phone}}</small>
+                    <h6 class="text-info">{{$allLogs->name}} {{$allLogs->surname}}</h6>
+                    <h6 class="fas fa-edit text-primary">{{$allLogs->email}}</h6>
+                    <h6 class="fas fa-edit text-info">{{$allLogs->phone}}</h6>
+                    <h6 class="fas fa-edit text-warning"> {{$allLogs->position}}</h6>
                     <div><small class="text-success">created </small><small class="text-info">{{$allLogs->created_at}}</small></div>
                 </h5>
             </div>
