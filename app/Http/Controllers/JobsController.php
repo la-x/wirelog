@@ -19,7 +19,7 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $job = Job::orderBy('jobID', 'desc')->get();
+        $job = Job::orderBy('jobID', 'asc')->get();
         return view('job.index')->with('job', $job);
     }
 

@@ -16,7 +16,7 @@ class TechniciansController extends Controller
     {
         $a = auth()->user()->id;
         $b = Technician::where('id', '=', $a)->get();
-        $technician = Technician::orderBy('technicianID', 'desc')->get();
+        $technician = Technician::orderBy('technicianID', 'asc')->get();
         return view('technician.index')->with('technician', $technician)->with('b', $b);
     }
 
