@@ -16,12 +16,16 @@
         <h5>
             <div class="row">
                 <div class="col-md-12">
-                    <img style="width:100px" src="/storage/cover_images/{{$job->cover_image}}" alt="">
+                    <a href="/storage/cover_images/{{$job->cover_image}}">
+                        <img style="width:100px" src="/storage/cover_images/{{$job->cover_image}}" alt="">
+                    </a>
                 </div>
                 <div class="col-md-12">
                     <i class="fas fa-wrench"></i>
                     <small class="text-danger">SELECTED</small>
-                    <a href="/job/{{$job->jobID}}"><div class ="text-warning">{{$job->jobID}}</div></a>
+                    {{-- <a href="/job/{{$job->jobID}}"> --}}
+                        <div class ="text-warning">{{$job->jobID}}</div>
+                    {{-- </a> --}}
                     <div class="text-default">{{$job->contractor}}<div>
                     <div class="text-primary">{{$job->location}}</div>
                     <small class="text-success">created </small><small class="text-info">{{$job->created_at}}</small>
