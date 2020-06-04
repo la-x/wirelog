@@ -52,6 +52,8 @@ php artisan migrate
 
 php artisan migrate:rollback (to undo)
 
+default passwords for user credentials are set to 'password'
+
 // deploy online
 
 Ensure all default passwords are securely ammended.
@@ -62,3 +64,51 @@ Enter ftp.domain and port 21
 Transfer files to cpanel root
 Ensure index.php url is accurate
 Add desired restrictions to .htacess file.
+
+// UI help document
+
+Following successful registration/login, users are able to navigate towards the collapsable hamburger menu if viewing via mobile devices.
+This will review the navigation menu allowing users to navigate towards their desired destination.
+Should a user click on 'jobs' section, the job id number (yellow) will act as a href, allowing the user to proceed to view details relative to that specific job.
+In addition, the user is then able to click on the job photo (scan code) to obtain a full sized image should they require or wish to redistribute and/or print.
+If a user has administation credentials, they will similarly be able to click on technicians/users id numbers which will again act as a href to allow the user to edit or delete credtials.
+The implementation of bootstrap buttons has also been incorporated to enhance overall user interaction experience.
+
+// HTTPS and IP whitelist
+
+if by default your web hosting provider has assigned an SSL although not forced HTTPS, the following can be added to the .htaccess file:
+to whitelist an IP address(es), replace <xxx.xxx.xxx.xxx> with desired IP(s).
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+    
+    order deny,allow
+    deny from all
+    allow from <xxx.xxx.xxx.xxx>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    DOSSiteInterval 1
+    DOSSiteCount 1
+
+</IfModule>

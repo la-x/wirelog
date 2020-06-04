@@ -26,15 +26,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/jobs', 'PagesController@jobs')->middleware('auth');;
+Route::get('/jobs', 'PagesController@jobs')->middleware('auth');; // ensures only authorised/loggin in users can access this controller
 
-Route::get('/techs', 'PagesController@techs')->middleware('auth');;
+Route::get('/techs', 'PagesController@techs')->middleware('auth');; // ensures only authorised/loggin in users can access this controller
 
-Route::get('/job_log', 'PagesController@techs')->middleware('auth');;
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/job_log', 'PagesController@techs')->middleware('auth');; // ensures only authorised/loggin in users can access this controller
 
 Auth::routes();
 
@@ -44,12 +40,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('job', 'JobsController')->middleware('auth');
+Auth::routes();
 
-Route::resource('technician', 'TechniciansController')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('job_log', 'JobLogsController')->middleware('auth');
+Route::resource('job', 'JobsController')->middleware('auth'); // ensures only authorised/loggin in users can access this controller
 
-////////////////////////////////////////////////////////////////////////////////
+Route::resource('technician', 'TechniciansController')->middleware('auth'); // ensures only authorised/loggin in users can access this controller
 
-Route::resource('user', 'UsersController')->middleware('auth');;
+Route::resource('job_log', 'JobLogsController')->middleware('auth'); // ensures only authorised/loggin in users can access this controller
+
+Route::resource('user', 'UsersController')->middleware('auth');; // ensures only authorised/loggin in users can access this controller
