@@ -18,23 +18,17 @@
         @foreach($technician as $technician)
         <div class="card card-body mb-1 text-center">
             <h5>
-                <i class="fas fa-wrench"></i>
                 @if(Auth::user()->email == env("ADMIN"))
                     <a href="/technician/{{$technician->technicianID}}">
                 @endif<div class ="text-warning">{{$technician->technicianID}}</div></a>
-                <div class="text-default">{{$technician->name}} {{$technician->surname}}<div>
-                <div class ="text-primary">{{$technician->email}}</div></a>
-                <div class="text-primary">{{$technician->phone}}<div>
-                <div class="text-warning">{{$technician->position}}</div>
-                <small class="text-success">created </small><small class="text-info">{{$technician->created_at}}</small>
+                {{-- <i class="fas fa-hard-hat text-secondary"></i> --}}
+                <div><i class="fas fa-user text-primary"></i> {{$technician->name}} {{$technician->surname}} <span class="text-warning">{{$technician->position}}</span></div>
+                <h6><i class="fas fa-envelope text-info"></i> {{$technician->email}}</h6>
+                <h6><i class="fas fa-phone text-primary"></i> {{$technician->phone}}</h6>
+                <h6><span class="text-success"><i class="far fa-clock"></i></span> <span class="text-secondary">{{$technician->created_at}}</span></h6>
             </h5>
-        </div>
-            {{-- <div class="card p-3 mt-3 mb-3">
-            <h3><a href="/technician/{{$technician->technicianID}}">{{$technician->technicianID}} {{$technician->name}} {{$technician->surname}} {{$technician->email}} {{$technician->phone}} {{$technician->position}}</a></h3>
-            <small>created {{$technician->created_at}}</small>  --}}
+        </div>          
             
-            {{-- <h3>Contractor: {{$job->contractor}}</h3>
-            <h3>Location: {{$job->location}}</h3> --}}
         @endforeach
 
     @else

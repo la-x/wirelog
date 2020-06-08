@@ -3,7 +3,7 @@
 @section('content')
 <small>job>create.blade.php</small>
 @if(Auth::user()->email == env("ADMIN") OR $access == 'ICA')
-    <a href="./" class="btn btn-primary float-right">BACK</a>
+    <a href="./" class="btn btn-outline-dark float-right">BACK</a>
     <h1>ADD JOB</h1>
     {!! Form::open(['action' => 'JobsController@store', 'method' => 'Post', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
@@ -27,9 +27,10 @@
     </div>
     <small class="text-danger">2MB maximum</small>
 
-    {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
+    {{Form::submit('Submit', ['class' => 'btn btn-outline-info float-right'])}}
 {!! Form::close() !!}
-@else <div class="alert alert-warning">
+@else
+<div class="alert alert-warning">
     <strong>Sorry!</strong> You have unauthorised access to add a job.
 </div>
 @endif

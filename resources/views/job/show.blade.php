@@ -2,18 +2,10 @@
 
 @section('content')
 <small>job>show.blade.php</small>
-    <a href="/job" class="btn btn-primary float-right">BACK</a>
+    <a href="/job" class="btn btn-outline-dark float-right">BACK</a>
     <h3>JOB</h3>
-    {{-- <div class="card card-body mb-1 text-center">
-        <h5>
-            <i class="fas fa-wrench"></i>
-            <small class="text-danger">SELECTED</small>
-            <div class ="text-warning">{{$job->jobID}}</div>
-            <div class="text-default">{{$job->contractor}}<div>
-            <div class="text-primary">{{$job->location}}</div>
-        </h5>
-    </div> --}}
-    <div class="card card-body mb-1 text-center">
+    
+    <div class="card-body mb-1 text-center">
         <h5>
             <div class="row">
                 <div class="col-md-12">
@@ -22,14 +14,14 @@
                     </a>
                 </div>
                 <div class="col-md-12">
-                    <i class="fas fa-wrench"></i>
-                    <small class="text-danger">SELECTED</small>
+                    {{-- <small class="text-danger">SELECTED</small> --}}
                     {{-- <a href="/job/{{$job->jobID}}"> --}}
                         <div class ="text-warning">{{$job->jobID}}</div>
                     {{-- </a> --}}
+                    <i class="fas fa-wrench text-secondary"></i>
                     <div class="text-default">{{$job->contractor}}<div>
-                    <div class="text-primary">{{$job->location}}</div>
-                    <small class="text-success">created </small><small class="text-info">{{$job->created_at}}</small>
+                    <div class="text-info">{{$job->location}}</div>
+                    <small class="text-success"><i class="far fa-clock"></i></small> <small class="text-secondary">{{$job->created_at}}</small>
                 </div>
             </div>
         </h5>
@@ -38,11 +30,11 @@
     <hr>
 
     @if(Auth::user()->email == env("ADMIN") OR $access == 'ICA')
-    <a href="/job/{{$job->jobID}}/edit" class="btn btn-secondary">EDIT</a>
+    <a href="/job/{{$job->jobID}}/edit" class="btn btn-outline-dark">EDIT</a>
     {!!Form::open(['action' => ['JobsController@destroy', $job->jobID], 'method' => 'POST', 'class' => 'float-right'])!!}
         @if(Auth::user()->email == env("ADMIN"))
         {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+        {{Form::submit('Delete', ['class' => 'btn btn-outline-danger'])}}
         @endif
     {!!Form::close()!!}
     <hr>
@@ -55,17 +47,16 @@
     @foreach ($te as $te)
     <div class="card card-body mb-1 text-center">
         <h5>
-            <div class="fas fa-edit text-default">{{$te->comment}}</div>
+            <i class="fas fa-edit text-info"></i> <span>{{$te->comment}}</span>
             @if(count($b) == 0)
             <div class="alert alert-warning">
                 <strong>Sorry!</strong> You need to be a tech before you can see these details.
             </div>                                      
             @else
-            <h6 class="fas fa-edit text-info">{{$te->name}} {{$te->surname}}</h6>
-            <h6 class="fas fa-edit text-warning">{{$te->position}}</h6>
-            <h6 class="fas fa-edit text-primary">{{$te->phone}}</h6>
-            <h6 class="fas fa-edit text-info">{{$te->email}}</h6>
-            <div><small class="text-success">created </small><small class="fas fa-edit text-primary">{{$te->c_at}}</small></div>
+            <h6><span class="text-success"><i class="far fa-clock"></i></span> <span class="text-secondary">{{$te->c_at}}</span><h6>
+            <h6><i class="fas fa-user text-primary"></i> {{$te->name}} {{$te->surname}} <span class="text-warning">{{$te->position}}</span></h6> 
+            <h6><i class="fas fa-phone text-primary"></i> {{$te->phone}}</h6>
+            <h6><i class="fas fa-envelope text-info"></i> {{$te->email}}</h6>
             @endif
         </h5>
     </div>
@@ -96,7 +87,7 @@
         {{Form::label('id', 'id')}}
         {{Form::text('id', Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'id'])}}
     </div>
-    {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
+    {{Form::submit('Submit', ['class' => 'btn btn-outline-info mb-2 float-right'])}}
     {!! Form::close() !!}
     @endforeach
 @endif

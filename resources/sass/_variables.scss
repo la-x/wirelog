@@ -7,13 +7,28 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
+
+// $blue: #3490dc; //primary
+$blue: #007bff;
+
 $indigo: #6574cd;
+
 $purple: #9561e2;
+
 $pink: #f66d9b;
-$red: #e3342f;
+
+// $red: #e3342f; //danger
+$red: #dc3545;
+
 $orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
+
+// $yellow: #ffed4a; //warning
+$yellow: #ffc107;
+
+// $green: #38c172; //success
+$green: #28a745;
+
 $teal: #4dc0b5;
-$cyan: #6cb2eb;
+
+// $cyan: #6cb2eb; //info
+$cyan: #17a2b8;

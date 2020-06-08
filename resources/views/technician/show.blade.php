@@ -23,19 +23,16 @@
     <strong>Sorry!</strong> You have unauthorised access to view technicians.
 </div>                                      
 @else
-    <a href="/technician" class="btn btn-primary float-right">BACK</a>
+    <a href="/technician" class="btn btn-outline-dark float-right">BACK</a>
     <h3>TECHNICIAN</h3>
     <div class="card card-body mb-1 text-center">
         <h5>
-            <small class="text-danger">SELECTED</small>
-            <i class="fas fa-wrench"></i>
+            {{-- <small class="text-danger">SELECTED</small> --}}
             <div class ="text-warning">{{$technician->technicianID}}</div></a>
-            <div class="text-default">{{$technician->name}}<div>
-            <div class="text-default">{{$technician->surname}}</div>
-            <div class ="text-primary">{{$technician->email}}</div></a>
-            <div class="text-primary">{{$technician->phone}}<div>
-            <div class="text-warning">{{$technician->position}}</div>
-            <small class="text-info">created {{$technician->created_at}}</small>
+            <h6><i class="fas fa-user text-primary"></i> {{$technician->name}} {{$technician->surname}} <span class="text-warning">{{$technician->position}}</span></h6>
+            <h6><i class="fas fa-envelope text-info"></i> {{$technician->email}}</h6>
+            <h6><i class="fas fa-phone text-primary"></i> {{$technician->phone}}</h6>
+            <h6><span class="text-success"><i class="far fa-clock"></i></span> <span class="text-secondary">{{$technician->created_at}}</span></h6>
         </h5>
     </div>
 
@@ -47,10 +44,10 @@
     <div>{{$technician->position}}</div>
     <small>created {{$technician->created_at}}</small> --}}
     <hr>
-    <a href="/technician/{{$technician->technicianID}}/edit" class="btn btn-secondary">EDIT</a>
+    <a href="/technician/{{$technician->technicianID}}/edit" class="btn btn-outline-dark">EDIT</a>
     {!!Form::open(['action' => ['TechniciansController@destroy', $technician->technicianID], 'method' => 'POST', 'class' => 'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}
-    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+    {{Form::submit('Delete', ['class' => 'btn btn-outline-danger'])}}
     {!!Form::close()!!}
 @endif
 @endsection

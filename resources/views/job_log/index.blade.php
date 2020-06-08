@@ -8,19 +8,16 @@
     <strong>Sorry!</strong> You are unauthorised to view recent logs.
 </div>                                      
 @else
-<div>success</div>
     <h3>MOST RECENT</h3>
     @if(count($allLogs) > 0)
         @foreach($allLogs as $allLogs)
             <div class="card card-body mb-1 text-center">
                 <h5>
-                    <i class="fas fa-wrench"></i>
-                    <div class="fas fa-edit text-default">{{$allLogs->comment}}</div>
-                    <h6 class="text-info">{{$allLogs->name}} {{$allLogs->surname}}</h6>
-                    <h6 class="fas fa-edit text-primary">{{$allLogs->email}}</h6>
-                    <h6 class="fas fa-edit text-info">{{$allLogs->phone}}</h6>
-                    <h6 class="fas fa-edit text-warning"> {{$allLogs->position}}</h6>
-                    <div><small class="text-success">created </small><small class="text-info">{{$allLogs->created_at}}</small></div>
+                    <i class="fas fa-edit text-info"></i> <span>{{$allLogs->comment}}</span>
+                    <h6><span class="text-success"><i class="far fa-clock"></i></span> <span class="text-secondary">{{$allLogs->created_at}}</span><h6>
+                    <h6><i class="fas fa-user text-primary"></i> {{$allLogs->name}} {{$allLogs->surname}} <span class="text-warning">{{$allLogs->position}}</span></h6> 
+                    <h6><i class="fas fa-phone text-primary"></i> {{$allLogs->phone}}</h6>
+                    <h6><i class="fas fa-envelope text-info"></i> {{$allLogs->email}}</h6>
                 </h5>
             </div>
         @endforeach

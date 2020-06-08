@@ -31,7 +31,7 @@
 <!-- Button trigger modal -->
 <div class="text-center mt-5">
   <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
-    info
+    <i class="fas fa-info"></i>
   </button>
 
   <!-- Modal -->
@@ -45,16 +45,15 @@
           </button>
         </div>
         <div class="modal-body">
-          Following successful registration/login, users are able to navigate towards the collapsable hamburger menu if viewing via mobile devices.
+          Navigate towards and click on the hamburger menu to register/login if viewing on mobile devices. Additionally, use this menu to navigate to any other tabs.
           <hr>
-          Reveal the navigation menu allowing users to navigate towards their desired destination.
+          Should a user click on the 'JOBS' section, the job id number (orange) will act as a href, allowing the user to proceed to view details/comments relative to that specific job.
           <hr>
-          Should a user click on 'jobs' section, the job id number (yellow) will act as a href, allowing the user to proceed to view details relative to that specific job.
+          Within the 'JOBS' section, users are able to click on the job photo (scan code) to obtain a full sized image should they require or wish to redistribute and/or print.
           <hr>
-          Users are then able to click on the job photo (scan code) to obtain a full sized image should they require or wish to redistribute and/or print.
+          If a user has administation credentials, they will similarly be able to click on 'TECHNICIANS' and 'USERS' id numbers (orange) which will again act as a href to allow the user to edit or delete credtials.
           <hr>
-          If a user has administation credentials, they will similarly be able to click on technicians/users id numbers which will again act as a href to allow the user to edit or delete credtials.
-          The implementation of bootstrap buttons has also been incorporated to enhance overall user interaction experience.
+          The implementation of bootstrap buttons has also been incorporated to enhance overall user interaction experience, resulting in full CRUD functionality.
         </div>
         {{-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
