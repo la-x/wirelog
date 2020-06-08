@@ -2,6 +2,11 @@
 
 @section('content')
 {{-- <small>users>index.blade.php</small> --}}
+@if(Auth::user()->email !== 'l.albert@wirelog.com.au')
+<div class="alert alert-warning">
+    <strong>Sorry!</strong> unauthorised access.
+</div>                                      
+@else
     <h3>USERS</h3>
         @if(count($user) > 0)
         @foreach($user as $user)
@@ -17,8 +22,8 @@
             </h5>
         </div>
         @endforeach
-
     @else
         <p>No posts found</p>
     @endif
+@endif
 @endsection

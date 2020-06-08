@@ -2,6 +2,11 @@
 
 @section('content')
 {{-- <small>user>show.blade.php</small> --}}
+@if(Auth::user()->email !== 'l.albert@wirelog.com.au')
+<div class="alert alert-warning">
+    <strong>Sorry!</strong> unauthorised access.
+</div>                                      
+@else
     <a href="/user" class="btn btn-primary float-right">BACK</a>
     <h3>USER</h3>
     <div class="card card-body mb-1 text-center">
@@ -20,7 +25,7 @@
     {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
 
-    @if(count($b) !== 0)
+    @if(count($c) !== 0)
     <div class="alert alert-info">
         <strong>Hey!</strong> This user is already a tech.
     </div>                                      
@@ -71,5 +76,6 @@
     {!! Form::close() !!}
 
     @endif
+@endif
 
 @endsection

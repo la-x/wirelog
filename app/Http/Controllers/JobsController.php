@@ -19,6 +19,8 @@ class JobsController extends Controller
      */
     public function index()
     {
+        // $z = auth()->user()->id;
+        // $access = technician::find($z)->position;
         $job = Job::orderBy('jobID', 'desc')->get();
         return view('job.index')->with('job', $job);
     }
@@ -30,6 +32,8 @@ class JobsController extends Controller
      */
     public function create()
     {
+        // $z = auth()->user()->id;
+        // $access = technician::find($z)->position;
         return view('job.create');
     }
 
@@ -93,6 +97,7 @@ class JobsController extends Controller
 
     
     {   
+
         $a = auth()->user()->id;
         $b = Technician::where('id', '=', $a)->get();
         // return JobLog::where('jobID', '=', $a);

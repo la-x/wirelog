@@ -18,6 +18,10 @@ class JobLogsController extends Controller
     
     public function index()
     {
+        // $z = auth()->user()->id;
+        // $access = technician::find($z)->position;
+        // $a = auth()->user()->id;
+        // $b = Technician::where('id', '=', $a)->get();
         $allLogs = JobLog::orderBy('job_logID', 'desc')
         ->Join('technician', 'technician.id', '=', 'job_log.id')
         ->get();

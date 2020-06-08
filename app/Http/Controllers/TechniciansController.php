@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Technician;
+use Illuminate\Support\Arr;
 
 class TechniciansController extends Controller
 {
@@ -14,10 +15,16 @@ class TechniciansController extends Controller
      */
     public function index()
     {
+        $z = auth()->user()->id;
+        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        $access = Arr::get($x, 0);
+
+        // return \DB::table('technician')->pluck('position');
+
         $a = auth()->user()->id;
         $b = Technician::where('id', '=', $a)->get();
         $technician = Technician::orderBy('technicianID', 'desc')->get();
-        return view('technician.index')->with('technician', $technician)->with('b', $b);
+        return view('technician.index')->with('technician', $technician)->with('b', $b)->with('access', $access);
     }
 
     /**
@@ -27,6 +34,8 @@ class TechniciansController extends Controller
      */
     public function create()
     {
+        // $z = auth()->user()->id;
+        // $access = technician::find($z)->position;
         $idUsername = \DB::table('users')->pluck('username', 'id');
         $idEmail = \DB::table('users')->pluck('email', 'email');
         // $idlist = ['0' => 'Select an id'] + collect($idlist)->toArray();
@@ -72,6 +81,9 @@ class TechniciansController extends Controller
      */
     public function show($id)
     {
+        // $z = auth()->user()->id;
+        // $access = technician::find($z)->position;
+        // return technician::find($id)->position;
         $technician = Technician::find($id);
         return view('technician.show')->with('technician', $technician);
     }
@@ -84,6 +96,8 @@ class TechniciansController extends Controller
      */
     public function edit($id)
     {
+        // $z = auth()->user()->id;
+        // $access = technician::find($z)->position;
         $idUsername = \DB::table('users')->pluck('email', 'id');
         $technician = Technician::find($id);
         return view('technician.edit')->with('technician', $technician)->with('idUsername', $idUsername);

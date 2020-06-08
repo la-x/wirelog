@@ -12,6 +12,11 @@
     {{-- @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="/technician/create" class="btn btn-primary float-right">ADD TECH</a>
     @endif --}}
+    @if($access == 'admin')
+    <div>success</div>
+    @else
+    <div>no success</div>
+    @endif
     
     <h3>TECHNICIANS</h3>
     @if(count($technician) > 0)

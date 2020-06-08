@@ -29,23 +29,27 @@ ensure the following is set:
   ServerName wirelog.test
 </VirtualHost>
 
-The url wirelog.test should now be accessible for development.
+The url 'wirelog.test' should now be accessible for development.
 
-The following requires the nodejs and composer application(s) to be installed. Following this, perform the below commands/installs:
+The following requires the nodejs and composer applications to be installed. Following this, perform the below commands/installs:
 
-composer require laravel/ui
+composer require laravel/ui (this may take serveral minutes)
 php artisan ui bootstrap
 composer require laravelcollective/html (optional)
-php artisan ui:auth (if required)
+php artisan ui:auth (already installed in this clone)
 
 perform the following commands:
 npm install
 npm run dev
 
 regenerate .env file and add the above database name and phpMyAdmin login credentials.
+cp .env.example .env
+php artisan key:generate
 
 run:
 php artisan storage:link
+
+add images from public/stock_img to public/storage/cover_images
 
 to create new project exluding existing database entries, create new database 'wirelog' and run the following command:
 php artisan migrate
@@ -112,3 +116,24 @@ to whitelist an IP address(es), replace <xxx.xxx.xxx.xxx> with desired IP(s).
     DOSSiteCount 1
 
 </IfModule>
+
+// what the site does
+
+users can register to the system and see jobs and comments, although limited to anything else.
+following registration, admin are able to assign recently registered users to 'technicians'.
+once users have been assigned to a 'technician', they are able to comment on jobs and view other technicians credentials.
+if admin assign technicians with position title of 'admin', they are able to add jobs.
+
+Register new user with desired email address and password.
+Ensure new user isn't able to access any sensitive technician credentials or the following unauthorised pages:
+wirelog.test/job
+wirelog.test/technician
+wirelog.test/job_log
+wirelog.test/user
+wirelog.test/technician/1
+wirelog.test/technician/1/edit
+wirelog.test/technician/7000
+wirelog.test/user/1/edit
+wirelog.test/job_log
+
+Login as un: l.albert@wirelog.com.au  pw: password.

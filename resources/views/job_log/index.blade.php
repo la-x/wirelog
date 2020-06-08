@@ -2,6 +2,12 @@
 
 @section('content')
 {{-- <small>job_log>index.blade.php</small> --}}
+{{-- @if(Auth::user()->email !== 'l.albert@wirelog.com.au') --}}
+@if(Auth::user()->email !== 'l.albert@wirelog.com.au')
+<div class="alert alert-warning">
+    <strong>Sorry!</strong> unauthorised access.
+</div>                                      
+@else
     <h3>MOST RECENT</h3>
     @if(count($allLogs) > 0)
         @foreach($allLogs as $allLogs)
@@ -22,4 +28,5 @@
         No activity found.
     </div>
     @endif
+@endif
 @endsection
