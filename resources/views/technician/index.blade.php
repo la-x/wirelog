@@ -23,8 +23,8 @@
                 @endif<div class ="text-warning">{{$technician->technicianID}}</div></a>
                 {{-- <i class="fas fa-hard-hat text-secondary"></i> --}}
                 <div><i class="fas fa-user text-primary"></i> {{$technician->name}} {{$technician->surname}} <span class="text-warning">{{$technician->position}}</span></div>
-                <h6><i class="fas fa-envelope text-info"></i> {{$technician->email}}</h6>
                 <h6><i class="fas fa-phone text-primary"></i> {{$technician->phone}}</h6>
+                <h6><i class="fas fa-envelope text-info"></i> {{$technician->email}}</h6>
                 <h6><span class="text-success"><i class="far fa-clock"></i></span> <span class="text-secondary">{{$technician->created_at}}</span></h6>
             </h5>
         </div>          

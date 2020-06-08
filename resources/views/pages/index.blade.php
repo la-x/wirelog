@@ -17,7 +17,7 @@
     </div>
     <div class="mt-4 text-center">
       <h6>welcome</h6>
-      <i class="fas fa-tools"></i>
+      {{-- <i class="fas fa-tools"></i> --}}
     </div>
   </div>
 

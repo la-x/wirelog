@@ -35,11 +35,10 @@
                         <li class="nav-item"><a class="nav-link" href="/user">USERS</a></li>
                         <li class="nav-item"><a class="nav-link" href="/job_log">ACTIVITY</a></li>
                         @endif
-                        {{-- <li class="nav-item"><a class="nav-link" href="/job_log/create">ADD COMMENT</a></li> --}}
-                      {{-- @if(Auth::user()->email == 'l.albert@wirelog.com.au')
-                        <li class="nav-item"><a class="nav-link" href="/job/create">ADD JOBS</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/technician/create">ADD TECHNICIANS</a></li>
-                      @endif --}}
+                        {{-- <i class="fas fa-wrench"></i>
+                        <i class="fas fa-hard-hat">
+                        <i class="fas fa-user"></i>
+                        <i class="fas fa-edit"></i> --}}
                   @endif
                 </ul>
   
