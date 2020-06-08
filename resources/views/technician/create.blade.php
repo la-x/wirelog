@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>technician.create.blade.php</small> --}}
+<small>technician.create.blade.php</small>
 @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="./" class="btn btn-primary float-right">BACK</a>
     <h1>ADD TECHNICIAN</h1>

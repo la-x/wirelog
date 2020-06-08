@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>job_log>index.blade.php</small> --}}
+<small>job_log>index.blade.php</small>
 {{-- @if(Auth::user()->email !== 'l.albert@wirelog.com.au') --}}
-@if(Auth::user()->email !== 'l.albert@wirelog.com.au')
+@if(Auth::user()->email !== env("ADMIN"))
 <div class="alert alert-warning">
-    <strong>Sorry!</strong> unauthorised access.
+    <strong>Sorry!</strong> You are unauthorised to view recent logs.
 </div>                                      
 @else
+<div>success</div>
     <h3>MOST RECENT</h3>
     @if(count($allLogs) > 0)
         @foreach($allLogs as $allLogs)

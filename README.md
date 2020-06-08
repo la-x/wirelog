@@ -35,8 +35,6 @@ The following requires the nodejs and composer applications to be installed. Fol
 
 composer require laravel/ui (this may take serveral minutes)
 php artisan ui bootstrap
-composer require laravelcollective/html (optional)
-php artisan ui:auth (already installed in this clone)
 
 perform the following commands:
 npm install
@@ -45,6 +43,15 @@ npm run dev
 regenerate .env file and add the above database name and phpMyAdmin login credentials.
 cp .env.example .env
 php artisan key:generate
+
+go to .env and ensure key has been generated.
+Change the following:
+Line1   APP_NAME=wirelog
+Line12  APP_NAME=wirelog
+
+Add the following to the .env file:
+APP_ADMIN="l.albert@wirelog.com.au" or your preferred admin address.
+
 
 run:
 php artisan storage:link
@@ -119,13 +126,14 @@ to whitelist an IP address(es), replace <xxx.xxx.xxx.xxx> with desired IP(s).
 
 // what the site does
 
-users can register to the system and see jobs and comments, although limited to anything else.
-following registration, admin are able to assign recently registered users to 'technicians'.
-once users have been assigned to a 'technician', they are able to comment on jobs and view other technicians credentials.
-if admin assign technicians with position title of 'admin', they are able to add jobs.
+anyone can register to the system and see 'jobs' and 'comments', although limited to anything else.
+following registration, admin email addresses in the .env file are able to assign recently registered users to become 'technicians'.
+once users have been assigned to become a 'technician', they are able to comment on jobs and view other technicians credentials.
+In addition, if admin create new technicians with the role 'ICA', they are able to also add and edit jobs.
+Only main admin credentials are able to delete data and ammend user and technician credentials.
 
 Register new user with desired email address and password.
-Ensure new user isn't able to access any sensitive technician credentials or the following unauthorised pages:
+Ensure new user is not able to access any sensitive technician credentials or the following unauthorised pages:
 wirelog.test/job
 wirelog.test/technician
 wirelog.test/job_log
@@ -136,4 +144,4 @@ wirelog.test/technician/7000
 wirelog.test/user/1/edit
 wirelog.test/job_log
 
-Login as un: l.albert@wirelog.com.au  pw: password.
+credentials set to un:l.albert@wirelog.com.au pw:password

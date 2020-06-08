@@ -5,6 +5,7 @@ use App\JobLog;
 use App\Job;
 use App\Technician;
 use App\User;
+use Illuminate\Support\Arr;
 
 use Illuminate\Http\Request;
 
@@ -18,6 +19,9 @@ class JobLogsController extends Controller
     
     public function index()
     {
+        $z = auth()->user()->id;
+        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        $access = Arr::get($x, 0);
         // $z = auth()->user()->id;
         // $access = technician::find($z)->position;
         // $a = auth()->user()->id;
@@ -28,7 +32,7 @@ class JobLogsController extends Controller
 
         // $job_log = JobLog::orderBy('job_logID', 'desc')->get();
 
-        return view('job_log.index')->with('allLogs', $allLogs);
+        return view('job_log.index')->with('allLogs', $allLogs)->with('access', $access);
     }
 
     /**

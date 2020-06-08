@@ -31,8 +31,7 @@
                   @if(!Auth::guest())
                         <li class="nav-item"><a class="nav-link" href="/job">JOBS</a></li>
                         <li class="nav-item"><a class="nav-link" href="/technician">TECHNICIANS</a></li>
-                        <?php echo $adminENV = env("APP_ADMIN"); ?>
-                        @if(Auth::user()->email == $adminENV)
+                        @if(Auth::user()->email == env("ADMIN"))
                         <li class="nav-item"><a class="nav-link" href="/user">USERS</a></li>
                         <li class="nav-item"><a class="nav-link" href="/job_log">ACTIVITY</a></li>
                         @endif

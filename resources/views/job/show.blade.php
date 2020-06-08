@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>job>show.blade.php</small> --}}
+<small>job>show.blade.php</small>
     <a href="/job" class="btn btn-primary float-right">BACK</a>
     <h3>JOB</h3>
     {{-- <div class="card card-body mb-1 text-center">
@@ -37,11 +37,13 @@
 
     <hr>
 
-    @if(Auth::user()->email == 'l.albert@wirelog.com.au')
+    @if(Auth::user()->email == env("ADMIN") OR $access == 'ICA')
     <a href="/job/{{$job->jobID}}/edit" class="btn btn-secondary">EDIT</a>
     {!!Form::open(['action' => ['JobsController@destroy', $job->jobID], 'method' => 'POST', 'class' => 'float-right'])!!}
-    {{Form::hidden('_method', 'DELETE')}}
-    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+        @if(Auth::user()->email == env("ADMIN"))
+        {{Form::hidden('_method', 'DELETE')}}
+        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+        @endif
     {!!Form::close()!!}
     <hr>
     @endif

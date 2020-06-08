@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>technician>index.blade.php</small> --}}
+<small>technician>index.blade.php</small>
 
     @if(count($b) == 0)
     <div class="alert alert-warning">
@@ -12,11 +12,6 @@
     {{-- @if(Auth::user()->email == 'l.albert@wirelog.com.au')
     <a href="/technician/create" class="btn btn-primary float-right">ADD TECH</a>
     @endif --}}
-    @if($access == 'admin')
-    <div>success</div>
-    @else
-    <div>no success</div>
-    @endif
     
     <h3>TECHNICIANS</h3>
     @if(count($technician) > 0)
@@ -24,7 +19,7 @@
         <div class="card card-body mb-1 text-center">
             <h5>
                 <i class="fas fa-wrench"></i>
-                @if(Auth::user()->email == 'l.albert@wirelog.com.au')
+                @if(Auth::user()->email == env("ADMIN"))
                     <a href="/technician/{{$technician->technicianID}}">
                 @endif<div class ="text-warning">{{$technician->technicianID}}</div></a>
                 <div class="text-default">{{$technician->name}} {{$technician->surname}}<div>

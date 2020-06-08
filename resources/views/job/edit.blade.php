@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>job>edit.blade.php</small> --}}
-@if(Auth::user()->email == 'l.albert@wirelog.com.au')
+<small>job>edit.blade.php</small>
+@if(Auth::user()->email == env("ADMIN") OR $access == 'ICA')
     <a href="./" class="btn btn-primary float-right">BACK</a>
     <h1>EDIT JOB</h1>
     {!! Form::open(['action' => ['JobsController@update', $job->jobID], 'method' => 'Post', 'enctype' => 'multipart/form-data']) !!}
@@ -28,5 +28,10 @@
     {{Form::hidden('_method','PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
     {!! Form::close() !!}
+@else
+<div class="alert alert-warning">
+    <strong>Sorry!</strong> You have unauthorised access to edit jobs.
+</div>
 @endif
+
 @endsection

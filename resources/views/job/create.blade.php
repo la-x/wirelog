@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>job>create.blade.php</small> --}}
-@if(Auth::user()->email == 'l.albert@wirelog.com.au')
+<small>job>create.blade.php</small>
+@if(Auth::user()->email == env("ADMIN") OR $access == 'ICA')
     <a href="./" class="btn btn-primary float-right">BACK</a>
     <h1>ADD JOB</h1>
     {!! Form::open(['action' => 'JobsController@store', 'method' => 'Post', 'enctype' => 'multipart/form-data']) !!}
@@ -29,5 +29,8 @@
 
     {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
 {!! Form::close() !!}
+@else <div class="alert alert-warning">
+    <strong>Sorry!</strong> You have unauthorised access to add a job.
+</div>
 @endif
 @endsection

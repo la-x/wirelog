@@ -9,6 +9,7 @@ use App\JobLog;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
 
 class JobsController extends Controller
 {
@@ -19,10 +20,13 @@ class JobsController extends Controller
      */
     public function index()
     {
+        $z = auth()->user()->id;
+        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        $access = Arr::get($x, 0);
         // $z = auth()->user()->id;
         // $access = technician::find($z)->position;
         $job = Job::orderBy('jobID', 'desc')->get();
-        return view('job.index')->with('job', $job);
+        return view('job.index')->with('job', $job)->with('access', $access);
     }
 
     /**
@@ -32,9 +36,12 @@ class JobsController extends Controller
      */
     public function create()
     {
+        $z = auth()->user()->id;
+        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        $access = Arr::get($x, 0);
         // $z = auth()->user()->id;
         // $access = technician::find($z)->position;
-        return view('job.create');
+        return view('job.create')->with('access', $access);
     }
 
     /**
@@ -98,6 +105,10 @@ class JobsController extends Controller
     
     {   
 
+        $z = auth()->user()->id;
+        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        $access = Arr::get($x, 0);
+
         $a = auth()->user()->id;
         $b = Technician::where('id', '=', $a)->get();
         // return JobLog::where('jobID', '=', $a);
@@ -132,7 +143,7 @@ class JobsController extends Controller
         $user = User::find($userID);
         $job = Job::find($id);
         // return view('job.show')->with('job', $job)->with('user', $user);
-        return view('job.show')->with('job', $job)->with('te', $te)->with('b', $b);
+        return view('job.show')->with('job', $job)->with('te', $te)->with('b', $b)->with('access', $access);
     }
 
     /**
@@ -143,8 +154,12 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
+        $z = auth()->user()->id;
+        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        $access = Arr::get($x, 0);
+
         $job = Job::find($id);
-        return view('job.edit')->with('job', $job);
+        return view('job.edit')->with('job', $job)->with('access', $access);
     }
 
     /**

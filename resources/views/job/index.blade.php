@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>job>index.blade.php</small> --}}
-    @if(Auth::user()->email == 'l.albert@wirelog.com.au')
+<small>job>index.blade.php</small>
+    @if(Auth::user()->email == env("ADMIN") OR $access == 'ICA')
     <a href="/job/create" class="btn btn-primary float-right">ADD JOB</a>
     @endif
     <h3>JOBS</h3>

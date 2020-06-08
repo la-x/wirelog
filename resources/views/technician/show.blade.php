@@ -17,10 +17,10 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>show.blade.php</small> --}}
-@if(Auth::user()->email !== 'l.albert@wirelog.com.au')
+<small>show.blade.php</small>
+@if(Auth::user()->email !== env("ADMIN"))
 <div class="alert alert-warning">
-    <strong>Sorry!</strong> You need to be an admin before you can see these details.
+    <strong>Sorry!</strong> You have unauthorised access to view technicians.
 </div>                                      
 @else
     <a href="/technician" class="btn btn-primary float-right">BACK</a>

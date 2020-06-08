@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>user>show.blade.php</small> --}}
-@if(Auth::user()->email !== 'l.albert@wirelog.com.au')
+<small>user>show.blade.php</small>
+@if(Auth::user()->email !== env("ADMIN"))
 <div class="alert alert-warning">
     <strong>Sorry!</strong> unauthorised access.
 </div>                                      

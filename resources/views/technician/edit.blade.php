@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <small>technician>edit.blade.php</small> --}}
-@if(Auth::user()->email == 'l.albert@wirelog.com.au')
+<small>technician>edit.blade.php</small>
+@if(Auth::user()->email !== env("ADMIN"))
+<div class="alert alert-warning">
+    <strong>Sorry!</strong> You have unauthorised access to edit technicians.
+</div>                                      
+@else
     <a href="./" class="btn btn-primary float-right">BACK</a>
     <h1>EDIT TECHNICIAN</h1>
     {!! Form::open(['action' => ['TechniciansController@update', $technician->technicianID], 'method' => 'Post']) !!}
