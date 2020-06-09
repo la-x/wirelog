@@ -1,3 +1,15 @@
+// technologies
+WAMP 64-bit 3.2.0
+phpMyAdmin v5.0.2
+Postman v7.21.1
+Visual Studio Code v1.43
+GitBash v2.26.0
+Laravel 7.13.0
+Composer version 1.10.5
+Node v12.16.3
+Bootstrap v4
+Font Awesome v4
+
 // localhost development
 
 Download GitBash or use your preffered CLI.
