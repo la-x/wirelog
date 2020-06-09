@@ -3,6 +3,11 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    # (IP whitelist)
+    #order deny,allow
+    #deny from all
+    #allow from <45.248.77.164>
+
     RewriteEngine On
 
     # Handle Authorization Header
