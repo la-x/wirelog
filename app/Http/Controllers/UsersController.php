@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 Use App\Technician;
-use Illuminate\Support\Arr;
+// use Illuminate\Support\Arr;
 
 class UsersController extends Controller
 {
@@ -16,15 +16,16 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $z = auth()->user()->id;
-        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
-        $access = Arr::get($x, 0);
+        // $z = auth()->user()->id;
+        // $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        // $access = Arr::get($x, 0);
+
         // $z = auth()->user()->id;
         // $access = technician::find($z)->position;
         // $a = auth()->user()->id;
         // $b = Technician::where('id', '=', $a)->get();
         $user = User::orderBy('id', 'desc')->get();
-        return view('user.index')->with('user', $user)->with('access', $access);
+        return view('user.index')->with('user', $user);
     }
 
     /**

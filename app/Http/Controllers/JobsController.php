@@ -104,6 +104,14 @@ class JobsController extends Controller
 
     
     {   
+        $e = Job::select('jobID')->orderBy('jobID', 'desc')->pluck('jobID');
+        $lastID = Arr::get($e, 0);
+
+        if ($id > $lastID)  {
+            // echo 'id does not exist';
+            // die;
+            abort(403, 'Unauthorized action.');
+        }
 
         $z = auth()->user()->id;
         $x = technician::select('position')->where('id', '=', $z)->pluck('position');

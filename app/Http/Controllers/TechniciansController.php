@@ -15,16 +15,16 @@ class TechniciansController extends Controller
      */
     public function index()
     {
-        $z = auth()->user()->id;
-        $x = technician::select('position')->where('id', '=', $z)->pluck('position');
-        $access = Arr::get($x, 0);
+        // $z = auth()->user()->id;
+        // $x = technician::select('position')->where('id', '=', $z)->pluck('position');
+        // $access = Arr::get($x, 0);
 
         // return \DB::table('technician')->pluck('position');
 
         $a = auth()->user()->id;
         $b = Technician::where('id', '=', $a)->get();
         $technician = Technician::orderBy('technicianID', 'desc')->get();
-        return view('technician.index')->with('technician', $technician)->with('b', $b)->with('access', $access);
+        return view('technician.index')->with('technician', $technician)->with('b', $b);
     }
 
     /**
@@ -81,6 +81,15 @@ class TechniciansController extends Controller
      */
     public function show($id)
     {
+        $e = Technician::select('id')->orderBy('id', 'desc')->pluck('id');
+        $lastID = Arr::get($e, 0);
+
+        if ($id > $lastID)  {
+            // echo 'id does not exist';
+            // die;
+            abort(403, 'Unauthorized action.');
+        }
+
         // $z = auth()->user()->id;
         // $access = technician::find($z)->position;
         // return technician::find($id)->position;
