@@ -4,7 +4,7 @@ Download GitBash or use your preffered CLI.
 Go to https://github.com/la-x/wirelog and copy the link to clone with HTTPS: https://github.com/la-x/wirelog
 Open CLI and cd into desired location.
 Clone the above repository by running the following command:
-git clone now https://github.com/la-x/wirelogu
+git clone now https://github.com/la-x/wirelog
 Download and install LAMP, XAMP or WAMP.
 Open phpMyAdmin and create a new database titled 'wirelog', whilst ensuring phpMyAdmin user credentials are set to username 'root' and password ''.
 Find the SQL file titled 'wirelog.sql' located inside the root directory, and import the file into the 'wirelog' database.
