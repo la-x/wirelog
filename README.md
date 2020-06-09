@@ -40,17 +40,25 @@ perform the following commands:
 npm install
 npm run dev
 
-regenerate .env file and add the above database name and phpMyAdmin login credentials.
+regenerate .env file by performing the following command:
 cp .env.example .env
 php artisan key:generate
 
 go to .env and ensure key has been generated.
-Change the following:
-Line1   APP_NAME=wirelog
-Line12  APP_NAME=wirelog
+Ensure the following are in the .env:
+
+APP_NAME=wirelog
+APP_NAME=wirelog
+APP_URL=http://localhost
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=wirelog
+DB_USERNAME=root
+DB_PASSWORD=
 
 Add the following to the .env file:
-APP_ADMIN="l.albert@wirelog.com.au" or your preferred admin address.
+APP_ADMIN="l.albert@wirelog.com.au" (or your preferred admin address).
 
 
 run:
@@ -61,34 +69,23 @@ add images from public/stock_img to public/storage/cover_images
 to create new project exluding existing database entries, create new database 'wirelog' and run the following command:
 php artisan migrate
 
-php artisan migrate:rollback (to undo)
-
-default passwords for user credentials are set to 'password'
+note: all existing database user credentials default passwords are set to 'password'
 
 // deploy online
 
-Ensure all default passwords are securely ammended.
+Ensure all default passwords are securely updated and ammended for an online environment.
 Ensure domain nameservers are pointing towards desired web hosting address
 Login to cpanel and locate FTP credentials.
 Run your preferred FTP client e.g Filezilla, CoreFTP
 Enter ftp.domain and port 21
 Transfer files to cpanel root
 Ensure index.php url is accurate
-Add desired restrictions to .htacess file.
-
-// UI help document
-
-Following successful registration/login, users are able to navigate towards the collapsable hamburger menu if viewing via mobile devices.
-This will review the navigation menu allowing users to navigate towards their desired destination.
-Should a user click on 'jobs' section, the job id number (yellow) will act as a href, allowing the user to proceed to view details relative to that specific job.
-In addition, the user is then able to click on the job photo (scan code) to obtain a full sized image should they require or wish to redistribute and/or print.
-If a user has administation credentials, they will similarly be able to click on technicians/users id numbers which will again act as a href to allow the user to edit or delete credtials.
-The implementation of bootstrap buttons has also been incorporated to enhance overall user interaction experience.
+Add desired restrictions and IP whitelists to .htacess file.
 
 // HTTPS and IP whitelist
 
-if by default your web hosting provider has assigned an SSL although not forced HTTPS, the following can be added to the .htaccess file:
-to whitelist an IP address(es), replace <xxx.xxx.xxx.xxx> with desired IP(s).
+If by default your web hosting provider has assigned an SSL although not forced HTTPS, the following can be added to the .htaccess file:
+Additionally, to whitelist an IP address, replace <xxx.xxx.xxx.xxx> with desired IP(s).
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -129,19 +126,65 @@ to whitelist an IP address(es), replace <xxx.xxx.xxx.xxx> with desired IP(s).
 anyone can register to the system and see 'jobs' and 'comments', although limited to anything else.
 following registration, admin email addresses in the .env file are able to assign recently registered users to become 'technicians'.
 once users have been assigned to become a 'technician', they are able to comment on jobs and view other technicians credentials.
-In addition, if admin create new technicians with the role 'ICA', they are able to also add and edit jobs.
+In addition, if admin create new technicians with the role 'ICA', they are able to also add and edit jobs (although not delete).
 Only main admin credentials are able to delete data and ammend user and technician credentials.
 
-Register new user with desired email address and password.
-Ensure new user is not able to access any sensitive technician credentials or the following unauthorised pages:
+Ensure guest users who are not registered are redirected to a login form and are unable to access the following pages:
+
+wirelog.test/home
 wirelog.test/job
 wirelog.test/technician
-wirelog.test/job_log
 wirelog.test/user
-wirelog.test/technician/1
-wirelog.test/technician/1/edit
-wirelog.test/technician/7000
-wirelog.test/user/1/edit
 wirelog.test/job_log
 
-credentials set to un:l.albert@wirelog.com.au pw:password
+Register new user with desired email address and password.
+Ensure new user is able to view jobs and their comments, although unable access any sensitive technician credentials or the following unauthorised pages:
+
+wirelog.test/job/5000
+wirelog.test/job/1/edit
+wirelog.test/technician
+wirelog.test/technician/5000
+wirelog.test/technician/1/edit
+wirelog.test/job_log
+wirelog.test/user
+wirelog.test/user/5000
+wirelog.test/user/1/edit
+
+default admin credentials set to un:l.albert@wirelog.com.au pw:password
+
+Log into admin credentials either above or the newly ammended .env admin, and find the new user in the 'users' section.
+Enter in the credentials for this user to become a technician.
+Ensure this user has now be added to the 'technicians' section.
+Log out of admin.
+Log in with this newly created technician and ensure they are able to comment and see other technicians sensistive information.
+Ensure this user is unable to delete data unless provided with an 'ICA' role.
+Ensure new technician is unable to access the following pages:
+
+wirelog.test/job/5000
+wirelog.test/job/1/edit
+wirelog.test/technician/5000
+wirelog.test/technician/1/edit
+wirelog.test/job_log
+wirelog.test/user
+wirelog.test/user/5000
+wirelog.test/user/1/edit
+
+Log out of technician account.
+Log back into admin, and locate the recently added technician. click edit and change position to 'ICA'.
+Ensure technician was successfully updated.
+Log out of admin.
+
+Log in as the recently ammended technician.
+Ensure user is able to everything previously, with the addition of adding and editting jobs (although not deleting):
+
+wirelog.test/job/1/edit (success)
+
+Ensure user is unable to access the following:
+
+wirelog.test/job/5000
+wirelog.test/technician/5000
+wirelog.test/technician/1/edit
+wirelog.test/job_log
+wirelog.test/user
+wirelog.test/user/5000
+wirelog.test/user/1/edit
