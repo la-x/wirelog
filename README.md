@@ -191,3 +191,5 @@ wirelog.test/job_log
 wirelog.test/user
 wirelog.test/user/5000
 wirelog.test/user/1/edit
+
+Login in as admin, ensure admin is able to delete recently added user.
