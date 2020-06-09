@@ -39,7 +39,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">help</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><i class="far fa-meh"></i> help</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -54,7 +54,14 @@
           If a user has administation credentials, they will similarly be able to click on 'TECHNICIANS' and 'USERS' id numbers (orange) which will again act as a href to allow the user to edit or delete credtials.
           <hr>
           The implementation of bootstrap buttons has also been incorporated to enhance overall user interaction experience, resulting in full CRUD functionality.
-        </div>
+
+          <div><i class="fas fa-wrench text-secondary mt-3"></i> indicates a job</div>
+          <div><i class="fas fa-edit text-secondary"></i> indicates logged comments</div>
+          <div><i class="far fa-clock text-secondary"></i> indicates timestamp data was created</div>
+          <div><i class="fas fa-user text-secondary"></i> indicates users name</div>
+          <div><i class="fas fa-phone text-secondary"></i> indicates users contact number</div>
+          <div><i class="fas fa-envelope text-secondary"></i> indicates users contact email adddress</div>
+
         {{-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save changes</button>

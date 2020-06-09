@@ -105,6 +105,14 @@ class TechniciansController extends Controller
      */
     public function edit($id)
     {
+        $e = Technician::select('id')->orderBy('id', 'desc')->pluck('id');
+        $lastID = Arr::get($e, 0);
+
+        if ($id > $lastID)  {
+            // echo 'id does not exist';
+            // die;
+            abort(403, 'Unauthorized action.');
+        }
         // $z = auth()->user()->id;
         // $access = technician::find($z)->position;
         $idUsername = \DB::table('users')->pluck('email', 'id');
