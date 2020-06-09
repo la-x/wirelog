@@ -104,10 +104,19 @@ class JobsController extends Controller
 
     
     {   
-        $e = Job::select('jobID')->orderBy('jobID', 'desc')->pluck('jobID');
-        $lastID = Arr::get($e, 0);
+        $l = Job::select('jobID')->orderBy('jobID', 'desc')->pluck('jobID');
+        $lastID = Arr::get($l, 0);
+
+        $f = Job::select('jobID')->orderBy('jobID', 'asc')->pluck('jobID');
+        $firstID = Arr::get($f, 0);
 
         if ($id > $lastID)  {
+            // echo 'id does not exist';
+            // die;
+            abort(403, 'Unauthorized action.');
+        }
+
+        if ($id < $firstID)  {
             // echo 'id does not exist';
             // die;
             abort(403, 'Unauthorized action.');
@@ -162,6 +171,24 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
+        $l = Job::select('jobID')->orderBy('jobID', 'desc')->pluck('jobID');
+        $lastID = Arr::get($l, 0);
+
+        $f = Job::select('jobID')->orderBy('jobID', 'asc')->pluck('jobID');
+        $firstID = Arr::get($f, 0);
+
+        if ($id > $lastID)  {
+            // echo 'id does not exist';
+            // die;
+            abort(403, 'Unauthorized action.');
+        }
+
+        if ($id < $firstID)  {
+            // echo 'id does not exist';
+            // die;
+            abort(403, 'Unauthorized action.');
+        }
+        
         $z = auth()->user()->id;
         $x = technician::select('position')->where('id', '=', $z)->pluck('position');
         $access = Arr::get($x, 0);

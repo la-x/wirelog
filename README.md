@@ -141,6 +141,7 @@ Register new user with desired email address and password.
 Ensure new user is able to view jobs and their comments, although unable access any sensitive technician credentials or the following unauthorised pages:
 
 wirelog.test/job/5000
+wirelog.test/job/-2
 wirelog.test/job/1/edit
 wirelog.test/technician
 wirelog.test/technician/5000
@@ -161,6 +162,7 @@ Ensure this user is unable to delete data unless provided with an 'ICA' role.
 Ensure new technician is unable to access the following pages:
 
 wirelog.test/job/5000
+wirelog.test/job/-2
 wirelog.test/job/1/edit
 wirelog.test/technician/5000
 wirelog.test/technician/1/edit
@@ -182,6 +184,7 @@ wirelog.test/job/1/edit (success)
 Ensure user is unable to access the following:
 
 wirelog.test/job/5000
+wirelog.test/job/-2
 wirelog.test/technician/5000
 wirelog.test/technician/1/edit
 wirelog.test/job_log
